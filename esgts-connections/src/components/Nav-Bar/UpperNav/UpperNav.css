@@ -1,0 +1,35 @@
+.uppernav{
+    background-color: #000;
+}
+
+div ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 20px 0 20px;
+}
+div ul li{
+    display: inline-block;
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 15px ;
+}
+div ul li a{
+    color: white;
+    width: auto;
+    text-decoration: none;
+}
+
+div ul li:first-child{
+    padding-left: 20px ;
+}
+
+div ul li:nth-child(2){
+    float:right;
+}
+
+div ul li:last-child{
+    float: right;
+    width: auto;
+}
+
