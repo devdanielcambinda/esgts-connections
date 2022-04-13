@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 .uppernav{
     background-color: #000;
 }
@@ -9,15 +10,18 @@ div ul {
 }
 div ul li{
     display: inline-block;
-    font-family: Trebuchet MS, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 12px;
     font-weight: bold;
     margin: 15px ;
+    
 }
 div ul li a{
     color: white;
     width: auto;
     text-decoration: none;
+    padding-left: 13px;
+
 }
 
 div ul li:first-child{
@@ -26,10 +30,12 @@ div ul li:first-child{
 
 div ul li:nth-child(2){
     float:right;
+    padding-right: 20px;
 }
 
 div ul li:last-child{
     float: right;
     width: auto;
+    margin-left: 0;
 }
 

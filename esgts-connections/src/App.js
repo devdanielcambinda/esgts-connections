@@ -4,7 +4,7 @@ import NavBar from './components/Nav-Bar/NavBar';
 
 function App() {
 
-  const [isLogged, setLogged] = useState(true)
+  const [isLogged, setLogged] = useState(false)
 
   return (
     <div className="">
