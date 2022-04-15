@@ -12,15 +12,6 @@ const UpperNav = () =>{
               <span>O POLITÉCNICO DE SANTARÉM</span>
             </a>
           </li>
-          <li >
-            <a
-              href="https://www.ipsantarem.pt/apresentacao-e-estatutos/"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <span>CONTACTOS</span>
-            </a>
-          </li>
           <li>
             <a
               href="https://www.ipsantarem.pt/apresentacao-e-estatutos/"
@@ -30,6 +21,16 @@ const UpperNav = () =>{
               <span>NOTÍCIAS</span>
             </a>
           </li>
+          <li >
+            <a
+              href="https://www.ipsantarem.pt/apresentacao-e-estatutos/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <span>CONTACTOS</span>
+            </a>
+          </li>
+          
         </ul>
       </div>
     );
