@@ -1,4 +1,5 @@
 import './LowerNav.css'
+import {Link} from 'react-router-dom'
 
 const LowerNav = (props) => {
 
@@ -9,21 +10,21 @@ const LowerNav = (props) => {
       <nav className="lowernav">
         <ul>
           <li>
-            <a href="/">
+            <Link to="/">
               <img
                 src="https://siesgt.ipsantarem.pt/esgt/imagens/LogotipoSITEdtmod20220310140019"
                 alt=""
               ></img>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/estagios">Estágios</a>
+            <Link to="/estagios">Estágios</Link>
           </li>
           <li>
-            <a href="/workshops">Workshops</a>
+            <Link to="/workshops">Workshops</Link>
           </li>
           <li>
-            <a href="/perfil">Perfil</a>
+            <Link to="/perfil">Perfil</Link>
           </li>
         </ul>
       </nav>
@@ -37,32 +38,32 @@ const LowerNav = (props) => {
       <nav className="lowernav">
         <ul>
           <li>
-            <a href="/">
+            <Link to="/">
               <img
                 src="https://siesgt.ipsantarem.pt/esgt/imagens/LogotipoSITEdtmod20220310140019"
                 alt=""
               ></img>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/estagios">
+            <Link to="/estagios">
             <span>Estágios</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/workshops">
+            <Link to="/workshops">
             <span>Workshops</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/perfil">
+            <Link to="/registar">
               <span>Registar</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/login">
+            <Link to="/login">
               <span>Login</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
