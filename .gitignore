@@ -1,2 +1,4 @@
 /back-end-express/node_modules
 /esgts-connections/node_modules
+/back-end-express/package-lock.json
+/esgts-connections/package-lock.json
