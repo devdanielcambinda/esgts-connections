@@ -8,7 +8,7 @@ const NavBar = (props)=>{
     const [isLogged, setLogged] = useState(props.isLogged)
 
     return (
-      <div className="sticky">
+      <div >
         <UpperNav />
         <LowerNav isLogged={isLogged} />
       </div>

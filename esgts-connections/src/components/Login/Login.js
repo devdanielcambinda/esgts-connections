@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.css";
 import { useState } from "react";
 
 const Login = () => {
@@ -21,7 +22,7 @@ const Login = () => {
       password,
     };
 
-    console.log(loginInformation)
+    console.log(loginInformation);
 
     //db get req for auth token cookie
 
