@@ -2,8 +2,8 @@ import './UpperNav.css'
 const UpperNav = () =>{
     return (
       <div className="uppernav">
-        <ul >
-          <li >
+        <ul>
+          <li>
             <a
               href="https://www.ipsantarem.pt/apresentacao-e-estatutos/"
               rel="noreferrer"
@@ -14,23 +14,22 @@ const UpperNav = () =>{
           </li>
           <li>
             <a
-              href="https://www.ipsantarem.pt/apresentacao-e-estatutos/"
+              href="https://www.ipsantarem.pt/noticias/"
               rel="noreferrer"
               target="_blank"
             >
               <span>NOTÍCIAS</span>
             </a>
           </li>
-          <li >
+          <li>
             <a
-              href="https://www.ipsantarem.pt/apresentacao-e-estatutos/"
+              href="https://www.ipsantarem.pt/contactos/"
               rel="noreferrer"
               target="_blank"
             >
               <span>CONTACTOS</span>
             </a>
           </li>
-          
         </ul>
       </div>
     );

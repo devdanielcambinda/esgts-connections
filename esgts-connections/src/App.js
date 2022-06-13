@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer'
 import Estagios from './components/Estagios/Estagios';
 import Workshops from './components/Workshops/Workshops';
 import Perfil from './components/Perfil/Perfil';
+import NoPageFound from './components/NoPageFound/NoPageFound'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/estagios" element={<Estagios />} />
           <Route path="/workshops" element={<Workshops />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path='*' element={<NoPageFound />} />
         </Routes>
         <Footer />
       </div>

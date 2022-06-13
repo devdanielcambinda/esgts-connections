@@ -7,7 +7,7 @@ const LowerNav = (props) => {
 
     // padding top e bottom 20 px 12px left e right -- font size 14px font-weight 800 ---
     const menuLogged = (
-      <nav className="lowernav">
+      <nav className="lowernav" >
         <ul>
           <li>
             <Link to="/">
