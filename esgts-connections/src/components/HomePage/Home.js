@@ -29,29 +29,54 @@ const Home = () => {
         </div>
       </div>
 
-      <div class="container" style={{marginTop:20}}>
+      <div class="container" style={{ marginTop: 20 }}>
         <div class="row">
           <div class="col-md-4">
             <h2>Estágio</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="/" role="button">View details »</a></p>
+            <p>
+              Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+              tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+              fermentum massa justo sit amet risus. Etiam porta sem malesuada
+              magna mollis euismod. Donec sed odio dui.{" "}
+            </p>
+            <p>
+              <a class="btn btn-secondary" href="/estagios" role="button">
+                View details »
+              </a>
+            </p>
           </div>
           <div class="col-md-4">
             <h2>Workshops</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="/" role="button">View details »</a></p>
+            <p>
+              Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
+              tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+              fermentum massa justo sit amet risus. Etiam porta sem malesuada
+              magna mollis euismod. Donec sed odio dui.{" "}
+            </p>
+            <p>
+              <a class="btn btn-secondary" href="/workshops" role="button">
+                View details »
+              </a>
+            </p>
           </div>
           <div class="col-md-4">
             <h2>Ofertas de trabalho</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="/" role="button">View details »</a></p>
+            <p>
+              Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
+              egestas eget quam. Vestibulum id ligula porta felis euismod
+              semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+              condimentum nibh, ut fermentum massa justo sit amet risus.
+            </p>
+            <p>
+              <a class="btn btn-secondary" href="/trabalhos" role="button">
+                View details »
+              </a>
+            </p>
           </div>
         </div>
 
-        <hr/>
-
+        <hr />
       </div>
-
     </div>
   );
 };

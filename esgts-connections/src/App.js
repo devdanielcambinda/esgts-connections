@@ -25,8 +25,9 @@ function App() {
           <Route path="/registar" element={<Registar />} />
           <Route path="/estagios" element={<Estagios />} />
           <Route path="/workshops" element={<Workshops />} />
+          <Route path="/trabalhos" />
           <Route path="/perfil" element={<Perfil />} />
-          <Route path='*' element={<NoPageFound />} />
+          <Route path="*" element={<NoPageFound />} />
         </Routes>
         <Footer />
       </div>
