@@ -7,7 +7,7 @@ const LowerNav = (props) => {
 
     // padding top e bottom 20 px 12px left e right -- font size 14px font-weight 800 ---
     const menuLogged = (
-      <nav className="lowernav" >
+      <nav className="lowernav">
         <ul>
           <li>
             <Link to="/">
@@ -22,6 +22,9 @@ const LowerNav = (props) => {
           </li>
           <li>
             <Link to="/workshops">Workshops</Link>
+          </li>
+          <li>
+            <Link to="/trabalhos">Trabalhos</Link>
           </li>
           <li>
             <Link to="/perfil">Perfil</Link>
@@ -47,13 +50,16 @@ const LowerNav = (props) => {
           </li>
           <li>
             <Link to="/estagios">
-            <span>Estágios</span>
+              <span>Estágios</span>
             </Link>
           </li>
           <li>
             <Link to="/workshops">
-            <span>Workshops</span>
+              <span>Workshops</span>
             </Link>
+          </li>
+          <li>
+            <Link to="/trabalhos">Trabalhos</Link>
           </li>
           <li>
             <Link to="/registar">

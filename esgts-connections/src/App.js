@@ -10,6 +10,7 @@ import Estagios from './components/Estagios/Estagios';
 import Workshops from './components/Workshops/Workshops';
 import Perfil from './components/Perfil/Perfil';
 import NoPageFound from './components/NoPageFound/NoPageFound'
+import Trabalhos from './components/Trabalhos/Trabalhos';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
           <Route path="/registar" element={<Registar />} />
           <Route path="/estagios" element={<Estagios />} />
           <Route path="/workshops" element={<Workshops />} />
-          <Route path="/trabalhos" />
+          <Route path="/trabalhos" element={<Trabalhos/>} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="*" element={<NoPageFound />} />
         </Routes>

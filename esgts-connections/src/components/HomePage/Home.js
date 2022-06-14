@@ -14,7 +14,7 @@ const Home = () => {
             <img
               src={"/ESGTS-1.jpg"}
               className="d-block w-100"
-              height="640"
+              style={{ maxHeight: 640 }}
               alt=""
             />
           </div>
@@ -22,7 +22,7 @@ const Home = () => {
             <img
               src="/ipsesgtslogo.png"
               className="d-block w-100"
-              height="640"
+              style={{ maxHeight: 640 }}
               alt=""
             />
           </div>
