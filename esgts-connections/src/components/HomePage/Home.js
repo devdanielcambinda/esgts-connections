@@ -26,7 +26,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div class="container" style={{ marginTop: 20 }}>
+      <div class="container" style={{ marginTop: 30 }}>
         <div class="row">
           <div class="col-md-4">
             <h2>Estágio</h2>
@@ -37,8 +37,8 @@ const Home = () => {
               magna mollis euismod. Donec sed odio dui.{" "}
             </p>
             <p>
-              <a class="btn btn-secondary" href="/estagios" role="button">
-                View details »
+              <a class="btn btn-danger" href="/estagios" role="button">
+                Ver estágios »
               </a>
             </p>
           </div>
@@ -51,8 +51,8 @@ const Home = () => {
               magna mollis euismod. Donec sed odio dui.{" "}
             </p>
             <p>
-              <a class="btn btn-secondary" href="/workshops" role="button">
-                View details »
+              <a class="btn btn-danger" href="/workshops" role="button">
+                Ver workshops »
               </a>
             </p>
           </div>
@@ -65,8 +65,8 @@ const Home = () => {
               condimentum nibh, ut fermentum massa justo sit amet risus.
             </p>
             <p>
-              <a class="btn btn-secondary" href="/trabalhos" role="button">
-                View details »
+              <a class="btn btn-danger" href="/trabalhos" role="button">
+                Ver trabalhos »
               </a>
             </p>
           </div>
