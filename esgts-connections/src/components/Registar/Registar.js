@@ -1,6 +1,6 @@
 const Registar = () => {
     return (
-      <div>
+      <div className="text-center">
         <p> hello from registar </p>
       </div>
     );

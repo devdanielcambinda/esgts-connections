@@ -1,9 +1,6 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap"
-import "jquery/dist/jquery"
 const Home = () => {
   return (
-    <div>
+    <div className="text-center">
       <div
         id="carouselExampleCaptions"
         className="carousel-dark slide"

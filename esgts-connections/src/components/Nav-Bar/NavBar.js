@@ -8,10 +8,10 @@ const NavBar = (props)=>{
     const [isLogged, setLogged] = useState(props.isLogged)
 
     return (
-      <div >
+      <nav id="navbar">
         <UpperNav />
         <LowerNav isLogged={isLogged} />
-      </div>
+      </nav>
     );
 
 }

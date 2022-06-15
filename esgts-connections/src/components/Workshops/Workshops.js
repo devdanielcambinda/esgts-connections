@@ -1,11 +1,8 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap";
-import "jquery/dist/jquery";
 import "./Workshops.css";
 
 const Workshops = () => {
   return (
-    <div>
+    <div className="text-center">
       <section className="jumbotron text-center">
         <div className="container">
           <h1 className="jumbotron-heading">Workshops</h1>

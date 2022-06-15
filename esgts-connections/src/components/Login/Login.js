@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.css";
 import { useState } from "react";
 
 const Login = () => {
@@ -31,40 +30,42 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div className="form-outline mb-4">
-        <label for="email" className="form-label">
-          E-mail:
-        </label>
-        <input
-          type="email"
-          id="email"
-          className="form-control"
-          value={email}
-          onChange={emailChangeHandler}
-          required
-        />
-      </div>
-      <div className="form-outline mb-4 align-text-center">
-        <label className="form-label" for="password">
-          Password:
-        </label>
-        <input
-          type="password"
-          id="password"
-          className="form-control"
-          value={password}
-          onChange={passwordChangeHandler}
-          required
-        />
-      </div>
+    <div className="container" style={{ width: 500 }}>
+      <form onSubmit={submitHandler} className="text-center">
+        <div className="form-group">
+          <label for="email" className="form-label">
+            E-mail:
+          </label>
+          <input
+            type="email"
+            id="email"
+            className="form-control"
+            value={email}
+            onChange={emailChangeHandler}
+            required
+          />
+        </div>
+        <div className="form-group mb-4">
+          <label className="form-label" for="password">
+            Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            className="form-control"
+            value={password}
+            onChange={passwordChangeHandler}
+            required
+          />
+        </div>
 
-      <div className="d-grid">
-        <button type="submit" className="btn btn-dark btn-block mb-4">
-          Login
-        </button>
-      </div>
-    </form>
+        <div className="d-grid">
+          <button type="submit" className="btn btn-dark mb-4">
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

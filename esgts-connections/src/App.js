@@ -1,4 +1,3 @@
-import './App.css';
 import { useState } from "react";
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavBar from './components/Nav-Bar/NavBar';
@@ -17,21 +16,22 @@ function App() {
   const [isLogged, setLogged] = useState(false)
   
   return (
+    
     <Router>
-      <div className="App">
+      <div className=''>
         <NavBar isLogged={isLogged} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registar" element={<Registar />} />
           <Route path="/estagios" element={<Estagios />} />
-          <Route path="/workshops" element={<Workshops />} />
-          <Route path="/trabalhos" element={<Trabalhos/>} />
-          <Route path="/perfil" element={<Perfil />} />
-          <Route path="*" element={<NoPageFound />} />
-        </Routes>
-        <Footer />
+         <Route path="/workshops" element={<Workshops />} />
+         <Route path="/trabalhos" element={<Trabalhos />} />
+         <Route path="/perfil" element={<Perfil />} />
+         <Route path="*" element={<NoPageFound />} />
+      </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }

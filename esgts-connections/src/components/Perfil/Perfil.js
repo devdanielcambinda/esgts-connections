@@ -1,9 +1,9 @@
 const Perfil = () =>{
-    return(
-        <div>
-            <p>Hello from Perfil</p>
-        </div>
-    )
+    return (
+      <div className="text-center">
+        <p>Hello from Perfil</p>
+      </div>
+    );
 }
 
 export default Perfil

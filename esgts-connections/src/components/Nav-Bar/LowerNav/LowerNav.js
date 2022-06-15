@@ -1,9 +1,11 @@
 import './LowerNav.css'
 import {Link} from 'react-router-dom'
+import { useState } from 'react'
+import React from 'react'
 
 const LowerNav = (props) => {
 
-    let isUserLogged = props.isLogged //boolean
+    const [isLogged, setLogged] = useState(props.isLogged) //boolean
 
     // padding top e bottom 20 px 12px left e right -- font size 14px font-weight 800 ---
     const menuLogged = (
@@ -33,7 +35,7 @@ const LowerNav = (props) => {
       </nav>
     );
 
-    if(isUserLogged){
+    if(isLogged){
         return menuLogged
     }
         

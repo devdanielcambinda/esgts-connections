@@ -1,11 +1,8 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap";
-import "jquery/dist/jquery";
 import './Estagios.css'
 
 const Estagios = () => {
   return (
-    <div>
+    <div className="text-center">
       <section className="jumbotron text-center">
         <div className="container">
           <h1 className="jumbotron-heading">Estágios</h1>
@@ -359,14 +356,34 @@ const Estagios = () => {
         </div>
       </div>
       <div aria-label="Page navigation example">
-            <ul className="pagination justify-content-center">
-                <li className="page-item"><a className="page-link" href="#">Previous</a></li>
-                <li className="page-item"><a className="page-link" href="#">1</a></li>
-                <li className="page-item"><a className="page-link" href="#">2</a></li>
-                <li className="page-item"><a className="page-link" href="#">3</a></li>
-                <li className="page-item"><a className="page-link" href="#">Next</a></li>
-            </ul>
-        </div>
+        <ul className="pagination justify-content-center">
+          <li className="page-item">
+            <a className="page-link" href="#">
+              Previous
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">
+              1
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">
+              2
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">
+              3
+            </a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">
+              Next
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

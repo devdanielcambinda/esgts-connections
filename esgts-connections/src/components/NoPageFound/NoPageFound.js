@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.css";
 const NoPageFound = () => {
   return (
     <div class="page-wrap d-flex flex-row align-items-center">

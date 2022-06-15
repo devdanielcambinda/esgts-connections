@@ -1,9 +1,10 @@
 import './Footer.css'
 const Footer = () =>{
     return (
-    <footer>
+      <footer className="text-center">
         <p> footer content goes here</p>
-    </footer>)
+      </footer>
+    );
 }
 
 export default Footer
