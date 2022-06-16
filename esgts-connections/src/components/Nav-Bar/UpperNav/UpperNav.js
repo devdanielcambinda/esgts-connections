@@ -1,7 +1,17 @@
 import './UpperNav.css'
 const UpperNav = () =>{
+
+    const myFunction = () =>{
+      let x = document.getElementById("uppernav");
+      if (x.className === "uppernav") {
+        x.className += " responsive";
+      } else {
+        x.className = "uppernav";
+      }
+    }
+
     return (
-      <div className="uppernav">
+      <div className="uppernav" id="uppernav">
         <ul>
           <li>
             <a
@@ -28,6 +38,13 @@ const UpperNav = () =>{
               target="_blank"
             >
               <span>CONTACTOS</span>
+            </a>
+          </li>
+          <li>
+            <a href="#!" className="icon" onClick={myFunction}>
+              <span>
+                <i class="fa-solid fa-bars fa-2x"></i>
+              </span>
             </a>
           </li>
         </ul>

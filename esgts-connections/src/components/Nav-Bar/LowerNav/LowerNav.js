@@ -7,9 +7,18 @@ const LowerNav = (props) => {
 
     const [isLogged, setLogged] = useState(props.isLogged) //boolean
 
+    const myFunction = () => {
+      let x = document.getElementById("lowernav");
+      if (x.className === "lowernav") {
+        x.className += " responsive";
+      } else {
+        x.className = "lowernav";
+      }
+    };
+
     // padding top e bottom 20 px 12px left e right -- font size 14px font-weight 800 ---
     const menuLogged = (
-      <nav className="lowernav">
+      <nav className="lowernav" id="lowernav">
         <ul>
           <li>
             <Link to="/">
@@ -31,6 +40,13 @@ const LowerNav = (props) => {
           <li>
             <Link to="/perfil">Perfil</Link>
           </li>
+          <li>
+            <a href="#!" className="icon" onClick={myFunction}>
+              <span>
+                <i class="fa-solid fa-bars fa-2x"></i>
+              </span>
+            </a>
+          </li>
         </ul>
       </nav>
     );
@@ -40,7 +56,7 @@ const LowerNav = (props) => {
     }
         
     return (
-      <nav className="lowernav">
+      <nav className="lowernav" id="lowernav">
         <ul>
           <li>
             <Link to="/">
@@ -72,6 +88,13 @@ const LowerNav = (props) => {
             <Link to="/login">
               <span>Login</span>
             </Link>
+          </li>
+          <li>
+            <a href="#!" className="icon" onClick={myFunction}>
+              <span>
+                <i class="fa-solid fa-bars fa-2x"></i>
+              </span>
+            </a>
           </li>
         </ul>
       </nav>

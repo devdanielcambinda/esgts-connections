@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 .uppernav{
     background-color: #000;
+    overflow: hidden;
 }
 
 .uppernav ul {
@@ -29,3 +30,31 @@
     padding-left: 33px ;
 }
 
+.uppernav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .uppernav ul li {display:none;}
+  .uppernav ul li:first-child{display: inline-block;}
+  .uppernav ul li:last-child{display: inline-block;}
+  .uppernav ul li a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .uppernav.responsive {position: relative;}
+  .uppernav.responsive a.icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  .uppernav.responsive ul li {
+    clear:both;
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
