@@ -1,4 +1,3 @@
-import './Login.css'
 import { useState } from "react";
 
 const Login = () => {
@@ -31,7 +30,7 @@ const Login = () => {
   };
 
   return (
-    <div className='centered-width'>
+    <div className='container' style={{maxWidth:500}}>
       <form onSubmit={submitHandler} className="text-center">
         <div className="form-group">
           <label for="email" className="form-label">
@@ -59,7 +58,6 @@ const Login = () => {
             required
           />
         </div>
-
         <div className="d-grid">
           <button type="submit" className="btn btn-dark mb-4">
             Login

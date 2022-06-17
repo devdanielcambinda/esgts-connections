@@ -3,7 +3,7 @@ const Footer = () =>{
       // <footer className="text-center">
       //   <p> footer content goes here</p>
       // </footer>
-      <footer class="text-center text-lg-start bg-light text-muted">
+      <footer class="mt-auto text-center text-lg-start bg-light text-muted">
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
           <div class="me-5 d-none d-lg-block">
             <span>Get connected with us on social networks:</span>

@@ -10,26 +10,26 @@ import Workshops from './components/Workshops/Workshops';
 import Perfil from './components/Perfil/Perfil';
 import NoPageFound from './components/NoPageFound/NoPageFound'
 import Trabalhos from './components/Trabalhos/Trabalhos';
+import './App.css'
 
 function App() {
 
   const [isLogged, setLogged] = useState(false)
   
   return (
-    
     <Router>
-      <div className=''>
+      <div className='main-content'>
         <NavBar isLogged={isLogged} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registar" element={<Registar />} />
           <Route path="/estagios" element={<Estagios />} />
-         <Route path="/workshops" element={<Workshops />} />
-         <Route path="/trabalhos" element={<Trabalhos />} />
-         <Route path="/perfil" element={<Perfil />} />
-         <Route path="*" element={<NoPageFound />} />
-      </Routes>
+          <Route path="/workshops" element={<Workshops />} />
+          <Route path="/trabalhos" element={<Trabalhos />} />
+          <Route path="/perfil" element={<Perfil />} />
+          <Route path="*" element={<NoPageFound />} />
+        </Routes>
       </div>
       <Footer />
     </Router>
