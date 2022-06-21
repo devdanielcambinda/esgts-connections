@@ -41,6 +41,9 @@ const LowerNav = (props) => {
             <Link to="/perfil">Perfil</Link>
           </li>
           <li>
+            <Link id="logout" to="/logout">Logout</Link>
+          </li>
+          <li>
             <a href="#!" className="icon" onClick={myFunction}>
               <span>
                 <i class="fa-solid fa-bars fa-2x"></i>

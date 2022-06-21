@@ -35,6 +35,15 @@
 
 }
 
+#logout {
+  color: #aa2424;
+  width: auto;
+  text-decoration: none;
+  text-align: center;
+  padding-left: 13px;
+    
+}
+
 .lowernav ul li:first-child{
     margin-right: auto;
     padding-left: 20px;
@@ -44,6 +53,8 @@
 .lowernav .icon {
   display: none;
 }
+
+
 
 @media screen and (max-width: 800px) {
   .lowernav ul li {display:none;}

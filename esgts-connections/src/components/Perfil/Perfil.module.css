@@ -1,0 +1,60 @@
+/* modified bootstrap classes */
+
+.card{
+    border:none;
+    position:relative;
+    overflow:hidden;
+    border-radius:8px;
+    /* cursor:none; */
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:#e49e9e;
+    transform:scaleY(1);
+    transition:all 0.5s;
+    transform-origin: bottom
+}
+
+.card:after{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:#aa2424;
+    transform:scaleY(0);
+    transition:all 0.5s;
+    transform-origin: bottom
+}
+
+.card:hover::after{
+    transform:scaleY(1);
+}
+
+
+.fonts{
+    font-size:11px;
+}
+
+.socialList{
+    display:flex;
+    list-style:none;
+    justify-content:center;
+    padding:0;
+}
+
+.socialList li a{
+    padding:10px;
+    color:#000000;
+    font-size:19px;
+}
+
+
+
