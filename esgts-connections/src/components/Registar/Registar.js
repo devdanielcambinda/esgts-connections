@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 const Registar = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,7 +9,7 @@ const Registar = () => {
   const [tipoDeConta, setTipoDeConta] = useState("");
   const [linkedinLink, setLinkedinLink] = useState("");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const nomeChangeHandler = (event) => {
     setNome(event.target.value);
@@ -55,7 +55,7 @@ const Registar = () => {
     setPassword("");
     setTipoDeConta("");
     setLinkedinLink("");
-    
+
     // navigate("/login")
   }
 

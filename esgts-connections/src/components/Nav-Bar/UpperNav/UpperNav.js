@@ -43,7 +43,7 @@ const UpperNav = () =>{
           <li>
             <a href="#!" className="icon" onClick={myFunction}>
               <span>
-                <i class="fa-solid fa-bars fa-2x"></i>
+                <i className="fa-solid fa-bars fa-2x"></i>
               </span>
             </a>
           </li>
