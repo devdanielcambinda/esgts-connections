@@ -11,7 +11,7 @@ const Perfil = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    tipo_de_perfil: {
+    tipoDePerfil: {
       required: true,
       type: Sequelize.ENUM("Aluno", "Professor", "Externo"),
       unique: false,

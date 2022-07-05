@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 // import { useNavigate } from "react-router-dom";
 const Registar = () => {
   const [email, setEmail] = useState("");
@@ -35,19 +36,25 @@ const Registar = () => {
     setLinkedinLink(event.target.value);
   };
 
-  function submitHandler(event) {
+  async function submitHandler(event) {
     event.preventDefault();
 
-    const registerInformation = {
-      nome,
-      email,
-      telefone,
-      password,
-      tipoDeConta,
-      linkedinLink,
-    };
+    const result = await fetch("/api/utilizador", {
+      method: "POST",
+      body: JSON.stringify({
+        nome: nome.toString(),
+        email: email.toString(),
+        telefone: telefone.toString(),
+        password: password.toString(),
+        tipoDeConta: tipoDeConta.toString(),
+        linkedinLink: linkedinLink.toString(),
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
 
-    console.log(registerInformation);
+    const data = await result.json();
+
+    console.log(data);
 
     setNome("");
     setEmail("");
