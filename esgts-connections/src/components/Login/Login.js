@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const location = useLocation();
 
   const emailChangeHandler = (event) => {
     setEmail(event.target.value);
@@ -30,7 +33,8 @@ const Login = () => {
   };
 
   return (
-    <div className='container' style={{maxWidth:500}}>
+    <div className="container" style={{ maxWidth: 500 }}>
+      {location.state ? <div style={{"color":"green"}}>{location.state.message}</div> : ""}
       <form onSubmit={submitHandler} className="text-center">
         <h2 className="mb-5">Login</h2>
         <div className="form-group required">

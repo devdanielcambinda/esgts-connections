@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const Registar = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,7 +11,10 @@ const Registar = () => {
   const [tipoDeConta, setTipoDeConta] = useState("");
   const [linkedinLink, setLinkedinLink] = useState("");
 
-  // const navigate = useNavigate();
+  const[errorMessage,setErrorMessage] = useState("");
+
+
+  const navigate = useNavigate();
 
   const nomeChangeHandler = (event) => {
     setNome(event.target.value);
@@ -52,9 +56,10 @@ const Registar = () => {
       headers: { "Content-Type": "application/json" },
     });
 
-    const data = await result.json();
 
-    console.log(data);
+    if(!(result.status === 200)) {
+      return setErrorMessage("Erro ao registar utilizador");
+    }
 
     setNome("");
     setEmail("");
@@ -62,12 +67,12 @@ const Registar = () => {
     setPassword("");
     setTipoDeConta("");
     setLinkedinLink("");
-
-    // navigate("/login")
+    navigate("/login",{state:{id:1,message:"Registo efectuado com sucesso"}});
   }
 
   return (
     <div className="container" style={{ maxWidth: 500 }}>
+      <p style={{"color":"red"}}>{errorMessage}</p>
       <form onSubmit={submitHandler} className="text-center">
         <h1 className="mb-5">Registar</h1>
         <div className="form-group required mb-4">
