@@ -68,6 +68,7 @@ const Registar = () => {
     setTipoDeConta("");
     setLinkedinLink("");
     navigate("/login",{state:{id:1,message:"Registo efectuado com sucesso"}});
+    
   }
 
   return (
