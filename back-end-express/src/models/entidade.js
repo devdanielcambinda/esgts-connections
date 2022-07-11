@@ -63,13 +63,6 @@ const Entidade = sequelize.define(
       unique: false,
       allowNull: false,
     },
-    ativo: {
-      required: true,
-      type: Sequelize.BOOLEAN,
-      defaultValue: true,
-      unique: false,
-      allowNull: false,
-    },
     deleted: {
       required: true,
       type: Sequelize.BOOLEAN,

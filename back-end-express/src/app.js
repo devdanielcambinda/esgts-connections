@@ -4,9 +4,7 @@ const express = require("express");
 const session = require("express-session");
 const cors = require("cors");
 const passport = require('./passport/passport')
-const contactoRouter = require('./routers/contacto')
 const entidadeRouter = require('./routers/entidade')
-const oportunidadesRouter = require('./routers/oportunidade')
 const utilizadorRouter = require('./routers/utilizador')
 const app = express();
 
@@ -29,9 +27,7 @@ app.use(passport.session());
 
 
 //routes
-app.use('/api/contactos',contactoRouter)
 app.use("/api/entidades", entidadeRouter);
-app.use("/api/oportunidades", oportunidadesRouter);
 app.use("/api/utilizador", utilizadorRouter);
 
 module.exports = app;

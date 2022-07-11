@@ -8,7 +8,6 @@ const OutrasMoradasEntidade = require('./models/outras_moradas_entidades')
 const Contacto = require('./models/contacto')
 const Oportunidade = require('./models/oportunidade')
 const Utilizador = require('./models/utilizador')
-const Perfil = require('./models/perfil')
 const Login = require('./models/logins')
 
 //entidade - outras moradas
@@ -20,9 +19,6 @@ Contacto.belongsTo(Entidade)
 //oportunidades - contactos
 Contacto.hasMany(Oportunidade)
 Oportunidade.belongsTo(Contacto)
-//utilizador - perfil
-Utilizador.hasOne(Perfil)
-Perfil.belongsTo(Utilizador)
 //utilizador - login
 Utilizador.hasMany(Login)
 Login.belongsTo(Utilizador)

@@ -38,6 +38,12 @@ const Utilizador = sequelize.define(
       unique: true,
       allowNull: false,
     },
+    tipoDePerfil: {
+      required: true,
+      type: Sequelize.ENUM("Aluno", "Professor", "Externo"),
+      unique: false,
+      allowNull: false,
+    },
     linkLinkedin: {
       required: false,
       type: Sequelize.STRING,

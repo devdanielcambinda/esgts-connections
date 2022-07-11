@@ -1,6 +1,6 @@
 const express = require('express')
+const auth = require('../middleware/auth')
 const Utilizador = require('../models/utilizador')
-const Perfil = require('../models/perfil')
 const Login = require('../models/logins')
 const passport = require('../passport/passport')
 
@@ -8,7 +8,6 @@ const router = new express.Router()
 
 router.post('/', async (req, res) => {
 
-    console.log(req.body)
     const receivedKeys = Object.keys(req.body)
     const requiredKeys = [
       "nome",
@@ -23,24 +22,20 @@ router.post('/', async (req, res) => {
     );
 
     if (!isValidOperation) {
-      return res.status(400).send({ error: "Error creating account!" });
+      return res.status(400).send({ message: "Erro a criar conta" });
     }
 
     try {
         const utilizador = await Utilizador.create({
-            nome: req.body.nome,
-            email: req.body.email,
-            telefone: req.body.telefone,
-            password: req.body.password,
-            linkLinkedin: req.body.linkLinkedin,
-        })
-
-        const perfil = await Perfil.create({
+          nome: req.body.nome,
+          email: req.body.email,
+          telefone: req.body.telefone,
+          password: req.body.password,
           tipoDePerfil: req.body.tipoDeConta,
-          UtilizadorId: utilizador.id,
+          linkLinkedin: req.body.linkLinkedin
         });
 
-        res.send({utilizador, perfil})
+        res.send({utilizador})
     } catch (e) {
       res.status(400).send(e);
     }
@@ -48,19 +43,19 @@ router.post('/', async (req, res) => {
 
 router.post('/login',passport.authenticate('local'), async (req, res) => {
 
-  var utilizadorInfo = {
-    id: req.user.id,
-    email: req.user.email,
-    nome: req.user.nome,
-  };
-  res.send(userInfo);
+    await Login.create({
+      UtilizadorId: req.user.id,
+    })
+
+    let utilizadorInfo = {
+      email: req.user.email,
+      nome: req.user.nome,
+    };
+    res.send(utilizadorInfo);
 
 })
 
-router.post('/logout', (req,res) => {
-  if(!req.user){
-    res.send({error: "Não tem sessão iniciada"})
-  }
+router.post('/logout',auth, (req,res) => {
   req.logout();
   res.send({message: "Sessão encerrada"})
 })
