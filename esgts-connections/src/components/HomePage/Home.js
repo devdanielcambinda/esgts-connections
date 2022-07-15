@@ -26,9 +26,9 @@ const Home = () => {
         </div>
       </div>
 
-      <div class="container" style={{ marginTop: 30 }}>
-        <div class="row">
-          <div class="col-md-4">
+      <div className="container" style={{ marginTop: 30 }}>
+        <div className="row">
+          <div className="col-md-4">
             <h2>Estágio</h2>
             <p>
               Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
@@ -37,12 +37,12 @@ const Home = () => {
               magna mollis euismod. Donec sed odio dui.{" "}
             </p>
             <p>
-              <a class="btn btn-danger" href="/estagios" role="button">
+              <a className="btn btn-danger" href="/estagios" role="button">
                 Ver estágios »
               </a>
             </p>
           </div>
-          <div class="col-md-4">
+          <div className="col-md-4">
             <h2>Workshops</h2>
             <p>
               Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
@@ -51,12 +51,12 @@ const Home = () => {
               magna mollis euismod. Donec sed odio dui.{" "}
             </p>
             <p>
-              <a class="btn btn-danger" href="/workshops" role="button">
+              <a className="btn btn-danger" href="/workshops" role="button">
                 Ver workshops »
               </a>
             </p>
           </div>
-          <div class="col-md-4">
+          <div className="col-md-4">
             <h2>Ofertas de trabalho</h2>
             <p>
               Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
@@ -65,7 +65,7 @@ const Home = () => {
               condimentum nibh, ut fermentum massa justo sit amet risus.
             </p>
             <p>
-              <a class="btn btn-danger" href="/trabalhos" role="button">
+              <a className="btn btn-danger" href="/trabalhos" role="button">
                 Ver trabalhos »
               </a>
             </p>

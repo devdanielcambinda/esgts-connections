@@ -24,7 +24,17 @@ const Login = () => {
       password,
     };
 
-    console.log(loginInformation);
+    const result = await fetch("/api/utilizador/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: email.toString(),
+        password: password.toString()
+      }),
+      headers: {"Content-Type": "application/json"},
+    });
+
+    const data = result.json()
+    console.log(data);
 
     //db get req for auth token cookie
 

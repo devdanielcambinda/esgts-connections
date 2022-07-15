@@ -18,6 +18,10 @@ app.use(
     secret: process.env.SESSION_SECRET, // session secret
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60  , // 1 hour
+      sameSite: "strict",
+    },
   })
 );
 
