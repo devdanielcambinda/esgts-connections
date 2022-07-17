@@ -38,11 +38,11 @@ const Utilizador = sequelize.define(
       unique: true,
       allowNull: false,
     },
-    avatar:{
-      required:false,
-      type:Sequelize.BLOB(),
-      unique:false,
-      allowNull:true
+    avatar: {
+      required: true,
+      type: Sequelize.BLOB(),
+      unique: false,
+      allowNull: true,
     },
     tipoDePerfil: {
       required: true,
@@ -79,7 +79,7 @@ Utilizador.beforeSave(async (utilizador, options) => {
   }
 });
 
-Utilizador.prototype.validPassword = function (password) {
-  return bcrypt.compare(password, this.password);
+Utilizador.prototype.validPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
 };
 module.exports = Utilizador;

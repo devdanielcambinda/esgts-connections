@@ -80,6 +80,17 @@ router.post("/login", passport.authenticate("local"), async (req, res) => {
   res.send(utilizadorInfo);
 });
 
+router.get("/me", auth, async (req, res) => {
+    res.send(req.user);
+})
+
+router.get("/me/avatar",auth, async(req,res) =>{
+
+     res.set("Content-Type", "image/png");
+     res.send(req.user.avatar);
+ 
+})
+
 router.post("/logout", auth, (req, res) => {
   req.logout(req.user, (err) => {
     if (err) {

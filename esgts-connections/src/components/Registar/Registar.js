@@ -128,6 +128,7 @@ const Registar = () => {
           </label>
           <input
             type="file"
+            accept="image/*"
             id="avatar"
             name="avatar"
             className="form-control"

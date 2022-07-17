@@ -15,12 +15,10 @@ passport.use(
       }
       return done(null, utilizador);
     } catch (err) {
-      cin
       return done(err);
     }
   })
 );
-
 
  passport.serializeUser(function (utilizador, done) {
   done(null, utilizador.id);

@@ -1,13 +1,33 @@
+import React, {useEffect, useState} from 'react';
 import styles from "./Perfil.module.css";
+
 const Perfil = () => {
-  return (
+
+  const [user, setUser] = useState();
+  useEffect( () => {
+
+    ( async ()=>{
+      const userResult = await fetch("/api/utilizador/me", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      const user = await userResult.json()
+      setUser(user)
+    })()
+
+    
+
+  }, []);
+
+  return !user ? null : (
     <div className="container mt-5 mb-4">
       <div className="row d-flex justify-content-center">
         <div className="col-md-7">
           <div className={styles.card + " p-3 py-4"}>
             <div className="text-center">
               <img
-                src="https://picsum.photos/200"
+                src="/api/utilizador/me/avatar"
                 width="100"
                 className="rounded-circle"
                 alt=""
@@ -15,49 +35,26 @@ const Perfil = () => {
             </div>
 
             <div className="text-center mt-3">
-              <h5 className="mt-2 mb-0">Daniel Cambinda</h5>
-              <span>Web developer</span>
+              <h5 className="mt-2 mb-0">{user.nome}</h5>
+              <span>{user.tipoDePerfil}</span>
 
               <div className="px-4 mt-1">
-                <p className={styles.fonts}>
-                  Consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat.{" "}
-                </p>
+                <p className={styles.fonts}>Email: {user.email}</p>
+                <p className={styles.fonts}>Telemóvel: {user.telefone}</p>
               </div>
 
               <ul className={styles.socialList}>
                 <li>
-                  <a href="/">
-                    <i className="fa fa-facebook"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="/">
-                    <i className="fa fa-dribbble"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="/">
-                    <i className="fa fa-instagram"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="/">
+                  <a href={user.linkLinkedin} target="_blank" rel="noreferrer">
                     <i className="fa fa-linkedin"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="/">
-                    <i className="fa fa-google"></i>
                   </a>
                 </li>
               </ul>
 
               <div className="buttons">
-                <button className="btn btn-outline-danger px-4">Editar Perfil</button>
-                <button className="btn btn-danger px-4 ms-3">Apagar conta</button>
+                <button className="btn btn-danger px-4 ms-3">
+                  Apagar conta
+                </button>
               </div>
             </div>
           </div>
