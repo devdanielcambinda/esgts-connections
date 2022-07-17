@@ -38,6 +38,12 @@ const Utilizador = sequelize.define(
       unique: true,
       allowNull: false,
     },
+    avatar:{
+      required:false,
+      type:Sequelize.BLOB(),
+      unique:false,
+      allowNull:true
+    },
     tipoDePerfil: {
       required: true,
       type: Sequelize.ENUM("Aluno", "Professor", "Externo"),
@@ -50,7 +56,7 @@ const Utilizador = sequelize.define(
       unique: false,
       allowNull: true,
       validate: {
-        iUrl: true,
+        isUrl: true,
         notEmpty: false,
       },
     },

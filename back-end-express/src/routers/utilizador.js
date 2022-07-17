@@ -1,17 +1,32 @@
 const express = require("express");
 const auth = require("../middleware/auth");
+const multer = require("multer");
+const sharp = require("sharp");
 const Utilizador = require("../models/utilizador");
 const Login = require("../models/logins");
 const passport = require("../passport/passport");
 
 const router = new express.Router();
 
-router.post("/", async (req, res) => {
+const avatarUploads = multer({
+  limits: {
+    fileSize: 1000000, // unite: bytes --> 1 MB
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+      return cb(new Error("Please insert a image file"));
+    }
+    cb(undefined, true);
+  },
+});
+
+router.post("/",avatarUploads.single('avatar'), async (req, res) => {
   const receivedKeys = Object.keys(req.body);
   const requiredKeys = [
     "nome",
     "email",
     "telefone",
+    "avatar",
     "password",
     "tipoDeConta",
     "linkedinLink",
@@ -25,13 +40,26 @@ router.post("/", async (req, res) => {
   }
 
   try {
+    console.log("here")
+    const buffer = await sharp(req.file.buffer)
+      .resize({
+        width: 250,
+        height: 250,
+      })
+      .png()
+      .toBuffer();
+
+      console.log(req.body)
+      console.log(buffer)
+
     const utilizador = await Utilizador.create({
       nome: req.body.nome,
       email: req.body.email,
       telefone: req.body.telefone,
+      avatar: buffer,
       password: req.body.password,
       tipoDePerfil: req.body.tipoDeConta,
-      linkLinkedin: req.body.linkLinkedin,
+      linkLinkedin: req.body.linkedinLink,
     });
 
     res.send({ utilizador });
