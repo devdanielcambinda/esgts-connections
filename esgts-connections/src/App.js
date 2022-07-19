@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
-import { BrowserRouter as Router, Routes, Route ,useLocation} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import NavBar from "./components/Nav-Bar/NavBar";
 import Home from "./components/HomePage/Home";
 import Login from "./components/Login/Login";

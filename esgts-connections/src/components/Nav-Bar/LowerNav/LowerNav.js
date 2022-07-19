@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 
 const LowerNav = () => {
   const sessionCookie = Cookies.get("sessionCookie");
-  const [isLogged, setLogged] = useState(sessionCookie !== undefined ? true : false);
+  const [isLogged] = useState(sessionCookie !== undefined ? true : false);
   const navigate = useNavigate();
 
   const myFunction = () => {

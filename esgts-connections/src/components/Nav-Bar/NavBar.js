@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import './NavBar.css'
 import LowerNav from './LowerNav/LowerNav' 
 import UpperNav from './UpperNav/UpperNav'
