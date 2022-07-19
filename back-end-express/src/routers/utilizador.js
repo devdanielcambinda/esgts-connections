@@ -96,9 +96,15 @@ router.post("/logout", auth, (req, res) => {
     if (err) {
       return next(err);
     }
-    console.log(req.user)
-    res.send({ message: "Sessão encerrada" });
+    req.session.destroy(function (err) {
+      if (err) {
+        next(err);
+      }
+      res.clearCookie("sessionCookie");
+      res.send({ message: "Sessão encerrada" });
   });
+  });
+  
 });
 
 module.exports = router;

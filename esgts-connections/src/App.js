@@ -1,25 +1,30 @@
 import { useState } from "react";
-import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import NavBar from './components/Nav-Bar/NavBar';
-import Home from './components/HomePage/Home'
-import Login from './components/Login/Login'
-import Registar from './components/Registar/Registar'
-import Footer from './components/Footer/Footer'
-import Estagios from './components/Estagios/Estagios';
-import Workshops from './components/Workshops/Workshops';
-import Perfil from './components/Perfil/Perfil';
-import NoPageFound from './components/NoPageFound/NoPageFound'
-import Trabalhos from './components/Trabalhos/Trabalhos';
-import './App.css'
+import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
+import { BrowserRouter as Router, Routes, Route ,useLocation} from "react-router-dom";
+import NavBar from "./components/Nav-Bar/NavBar";
+import Home from "./components/HomePage/Home";
+import Login from "./components/Login/Login";
+import Registar from "./components/Registar/Registar";
+import Footer from "./components/Footer/Footer";
+import Estagios from "./components/Estagios/Estagios";
+import Workshops from "./components/Workshops/Workshops";
+import Perfil from "./components/Perfil/Perfil";
+import NoPageFound from "./components/NoPageFound/NoPageFound";
+import Trabalhos from "./components/Trabalhos/Trabalhos";
+import Cookies from "js-cookie";
+import "./App.css";
 
 function App() {
 
-  const [isLogged, setLogged] = useState(false)
+  const cookieConsetExists = Cookies.get("CookieConsent") !== undefined;
+  console.log(cookieConsetExists);
+  const cookieConsentValueIsTrue = getCookieConsentValue() === 'true';
+  const [isAccepted, setIsAccepted] = useState( cookieConsetExists && cookieConsentValueIsTrue ? true : false);
   
   return (
     <Router>
       <div className='main-content'>
-        <NavBar isLogged={isLogged} />
+        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -31,6 +36,14 @@ function App() {
           <Route path="*" element={<NoPageFound />} />
         </Routes>
       </div>
+      {!isAccepted? <CookieConsent
+        debug={true}
+        style={{ background: "#000", textAlign: "left" }}
+        buttonStyle={{ background: "#aa2424", color: "white" }}
+        onAccept={() => setIsAccepted(true)}
+        >
+        This website uses cookies.
+      </CookieConsent> : ""}
       <Footer />
     </Router>
   );

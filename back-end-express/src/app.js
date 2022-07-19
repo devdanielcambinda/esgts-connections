@@ -15,10 +15,12 @@ app.use(express.json());
 //session
 app.use(
   session({
+    name:"sessionCookie",
     secret: process.env.SESSION_SECRET, // session secret
     resave: false,
     saveUninitialized: false,
     cookie: {
+      httpOnly:false,
       maxAge: 1000 * 60 * 60  , // 1 hour
       sameSite: "strict",
     },

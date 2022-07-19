@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const emailChangeHandler = (event) => {
     setEmail(event.target.value);
@@ -18,12 +19,6 @@ const Login = () => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
-    const loginInformation = {
-      //short-hand object definition
-      email,
-      password,
-    };
-
     const result = await fetch("/api/utilizador/login", {
       method: "POST",
       body: JSON.stringify({
@@ -33,13 +28,14 @@ const Login = () => {
       headers: {"Content-Type": "application/json"},
     });
 
-    const data = result.json()
-    console.log(data);
+    if(result.status === 200) {
+      setEmail("");
+      setPassword("");
+      navigate('/perfil')
+      document.location.reload()
+    }
 
-    //db get req for auth token cookie
-
-    setEmail("");
-    setPassword("");
+    
   };
 
   return (

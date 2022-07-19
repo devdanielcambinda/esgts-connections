@@ -1,10 +1,12 @@
 import "./LowerNav.css";
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import React from "react";
+import { Link,useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import Cookies from "js-cookie";
 
-const LowerNav = (props) => {
-  const [isLogged, setLogged] = useState(props.isLogged); //boolean
+const LowerNav = () => {
+  const sessionCookie = Cookies.get("sessionCookie");
+  const [isLogged, setLogged] = useState(sessionCookie !== undefined ? true : false);
+  const navigate = useNavigate();
 
   const myFunction = () => {
     let x = document.getElementById("lowernav");
@@ -16,11 +18,17 @@ const LowerNav = (props) => {
   };
 
   const logoutHandler = async () => {
-    await fetch("/api/utilizador/logout", {
+    const result = await fetch("/api/utilizador/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     });
+
+    if(result.status === 200){
+      navigate("/login",{state:{id:1,message:"Sessão encerrada com sucesso"}});
+      document.location.reload()
+    }
+
   };
 
   // padding top e bottom 20 px 12px left e right -- font size 14px font-weight 800 ---
