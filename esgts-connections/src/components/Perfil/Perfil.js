@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
+import { useNavigate } from "react-router-dom";
 import styles from "./Perfil.module.css";
 
 const Perfil = () => {
 
+  const navigate = useNavigate();
   const [user, setUser] = useState();
   useEffect( () => {
 
@@ -19,6 +21,20 @@ const Perfil = () => {
     
 
   }, []);
+
+  const deleteAccountHandler = async () =>{
+    const deleteResult = await fetch("/api/utilizador/me", {
+      method: "DELETE",
+      credentials: "include",
+    });
+
+    if(deleteResult.status !== 200){
+      alert("Erro ao eliminar conta")
+    }
+
+    navigate('/')
+    document.location.reload()
+  }
 
   return !user ? null : (
     <div className="container mt-5 mb-4">
@@ -52,7 +68,7 @@ const Perfil = () => {
               </ul>
 
               <div className="buttons">
-                <button className="btn btn-danger px-4 ms-3">
+                <button className="btn btn-danger px-4 ms-3" onClick={deleteAccountHandler}>
                   Apagar conta
                 </button>
               </div>

@@ -17,7 +17,6 @@ import "./App.css";
 function App() {
 
   const cookieConsetExists = Cookies.get("CookieConsent") !== undefined;
-  console.log(cookieConsetExists);
   const cookieConsentValueIsTrue = getCookieConsentValue() === 'true';
   const [isAccepted, setIsAccepted] = useState( cookieConsetExists && cookieConsentValueIsTrue ? true : false);
   

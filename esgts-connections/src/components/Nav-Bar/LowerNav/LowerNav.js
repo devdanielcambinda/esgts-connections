@@ -27,6 +27,8 @@ const LowerNav = () => {
     if(result.status === 200){
       navigate("/login",{state:{id:1,message:"Sessão encerrada com sucesso"}});
       document.location.reload()
+    }else{
+      document.location.reload()
     }
 
   };

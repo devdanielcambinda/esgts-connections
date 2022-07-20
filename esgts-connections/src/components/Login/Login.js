@@ -4,6 +4,7 @@ import { useLocation,useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginNotOK, setLoginNotOK] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,6 +34,10 @@ const Login = () => {
       setPassword("");
       navigate('/perfil')
       document.location.reload()
+    }else {
+      setLoginNotOK(true)
+      setEmail("");
+      setPassword("");
     }
 
     
@@ -41,6 +46,7 @@ const Login = () => {
   return (
     <div className="container" style={{ maxWidth: 500 }}>
       {location.state ? <div style={{"color":"green"}}>{location.state.message}</div> : ""}
+      {loginNotOK === true ? <div style={{"color":"red"}}>Email e&#47;ou password incorreto&#40;s&#41; </div> : ""}
       <form onSubmit={submitHandler} className="text-center">
         <h2 className="mb-5">Login</h2>
         <div className="form-group required">

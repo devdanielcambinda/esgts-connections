@@ -63,7 +63,7 @@ const Registar = () => {
     });
 
 
-    if(!(result.status === 200)) {
+    if((result.status !== 200)) {
       return setErrorMessage("Erro ao registar utilizador");
     }
 

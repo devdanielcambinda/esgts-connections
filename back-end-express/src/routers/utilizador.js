@@ -59,7 +59,7 @@ router.post("/",avatarUploads.single('avatar'), async (req, res) => {
       avatar: buffer,
       password: req.body.password,
       tipoDePerfil: req.body.tipoDeConta,
-      linkLinkedin: req.body.linkedinLink,
+      linkLinkedin: req.body.linkedinLink.length === 0 ? null : req.body.linkedinLink,
     });
 
     res.send({ utilizador });
@@ -89,6 +89,23 @@ router.get("/me/avatar",auth, async(req,res) =>{
      res.set("Content-Type", "image/png");
      res.send(req.user.avatar);
  
+})
+
+router.delete("/me", auth, async (req, res) => {
+
+  try {
+    req.user.deleted = true;
+    await req.user.save();
+    req.session.destroy( (err)=>{
+      if (err) {
+        return next(err);
+      }
+      res.clearCookie("sessionCookie");
+      res.send({ message: "Conta apagada" });
+    })
+  } catch (error) {
+    res.status(500).send({error})
+  }
 })
 
 router.post("/logout", auth, (req, res) => {
