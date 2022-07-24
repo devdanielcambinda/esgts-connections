@@ -40,7 +40,7 @@ const Utilizador = sequelize.define(
     },
     avatar: {
       required: true,
-      type: Sequelize.BLOB(),
+      type: Sequelize.BLOB,
       unique: false,
       allowNull: true,
     },

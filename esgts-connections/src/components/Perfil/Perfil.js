@@ -29,11 +29,12 @@ const Perfil = () => {
     });
 
     if(deleteResult.status !== 200){
-      alert("Erro ao eliminar conta")
+      return alert("Erro ao eliminar conta")
     }
 
     navigate('/')
     document.location.reload()
+    alert("Conta eliminada com sucesso.")
   }
 
   return !user ? null : (

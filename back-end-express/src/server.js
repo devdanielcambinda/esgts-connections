@@ -22,6 +22,9 @@ Oportunidade.belongsTo(Contacto)
 //utilizador - login
 Utilizador.hasMany(Login)
 Login.belongsTo(Utilizador)
+//contacto - utilizador
+Utilizador.hasOne(Contacto)
+Contacto.belongsTo(Utilizador)
 
 app.listen(port, async () => {
   console.log(`Server is up on port ${port}`);
