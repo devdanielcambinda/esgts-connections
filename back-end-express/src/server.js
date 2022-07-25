@@ -7,6 +7,7 @@ const Entidade = require('./models/entidade')
 const OutrasMoradasEntidade = require('./models/outras_moradas_entidades')
 const Contacto = require('./models/contacto')
 const Oportunidade = require('./models/oportunidade')
+const Area_Entidade = require('./models/area_entidade')
 const Utilizador = require('./models/utilizador')
 const Login = require('./models/logins')
 
@@ -25,6 +26,9 @@ Login.belongsTo(Utilizador)
 //contacto - utilizador
 Utilizador.hasOne(Contacto)
 Contacto.belongsTo(Utilizador)
+//entidade area
+Entidade.hasMany(Area_Entidade)
+Area_Entidade.belongsTo(Entidade)
 
 app.listen(port, async () => {
   console.log(`Server is up on port ${port}`);

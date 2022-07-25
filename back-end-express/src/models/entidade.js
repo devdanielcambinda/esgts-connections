@@ -55,14 +55,6 @@ const Entidade = sequelize.define(
       unique: false,
       allowNull: true,
     },
-    areas: {
-      required: true,
-      type: Sequelize.ARRAY(
-        Sequelize.ENUM("Informática", "Gestão", "Contabilidade", "Marketing")
-      ),
-      unique: false,
-      allowNull: false,
-    },
     deleted: {
       required: true,
       type: Sequelize.BOOLEAN,
