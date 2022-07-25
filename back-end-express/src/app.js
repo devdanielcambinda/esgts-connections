@@ -34,4 +34,19 @@ app.use(passport.session());
 //routes
 app.use("/api", api);
 
+app.get('*', (req, res) => {
+  res.status(404).send()
+})
+app.post('*', (req, res) => {
+  res.status(404).send();
+})
+app.put('*', (req, res) => {
+  res.status(404).send();
+}) 
+app.delete('*', (req, res) => {
+  res.status(404).send();
+})
+app.patch('*', (req, res) => {
+  res.status(404).send();
+})
 module.exports = app;
