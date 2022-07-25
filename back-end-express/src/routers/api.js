@@ -306,4 +306,40 @@ router.get("/entidades", async (req, res) => {
   }
 });
 
+//oportunidades
+router.post("/oportunidade",auth, async (req, res) => {
+    if(req.user.tipoDePerfil === "Externo"){
+      const oportunidade = await Oportunidade.create({
+        titulo: req.body.titulo,
+        descricao: req.body.descricao,
+        tipo_de_oportunidade: req.body.tipoDeOportunidade,
+        data_de_inicio: req.body.dataDeInicio,
+        data_de_fim: req.body.dataDeFim,
+        ContactoId: req.user.id,
+      });
+
+      res.send({oportunidade});
+    }else{
+      res.status(400).send({message: "Apenas externos podem criar oportunidades"});
+    }
+})
+
+router.get("/contacto/oportunidades", auth, async (req, res) => {
+
+  if(req.user.tipoDePerfil === "Externo"){
+    try {
+      const oportunidades = await Oportunidade.findAll({
+        where: {
+          deleted: false,
+          ContactoId: req.user.id,
+        },
+      });
+
+      res.send(oportunidades);
+    } catch (error) {
+      res.status(400).send({ error });
+    }
+  }
+})
+
 module.exports = router;

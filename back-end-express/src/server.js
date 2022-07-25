@@ -4,16 +4,12 @@ const app = require("./app");
 const port = process.env.PORT || 3007;
 const sequelize = require("./db/sequelize");
 const Entidade = require('./models/entidade')
-const OutrasMoradasEntidade = require('./models/outras_moradas_entidades')
 const Contacto = require('./models/contacto')
 const Oportunidade = require('./models/oportunidade')
 const Area_Entidade = require('./models/area_entidade')
 const Utilizador = require('./models/utilizador')
 const Login = require('./models/logins')
 
-//entidade - outras moradas
-Entidade.hasMany(OutrasMoradasEntidade)
-OutrasMoradasEntidade.belongsTo(Entidade)
 // entidade - contactos
 Entidade.hasMany(Contacto)
 Contacto.belongsTo(Entidade)
