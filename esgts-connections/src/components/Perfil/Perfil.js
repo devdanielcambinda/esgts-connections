@@ -55,10 +55,14 @@ const Perfil = () => {
 
   };
 
-  const adicionarOportunidadeHandler = async (novaOportunidade) => {
+  const adicionarOportunidadeHandler = async () => {
     setCriarOportunidade(false);
     window.location.reload();
   };
+
+  const apagarOportunidadeHandler = async (oportunidade) => {
+    //TODO: Apagar oportunidade
+  }
 
   const deleteAccountHandler = async () =>{
 
@@ -154,6 +158,7 @@ const Perfil = () => {
                         <button
                           type="button"
                           className="btn btn-sm btn-outline-danger"
+                          onClick={apagarOportunidadeHandler}
                         >
                           Apagar
                         </button>

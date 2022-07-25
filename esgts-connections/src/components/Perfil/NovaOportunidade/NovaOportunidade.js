@@ -75,10 +75,8 @@ export default function NovaOportunidade(props){
         });
 
         if(result.status === 200) {
-
-          const data = await result.json()
           resetFormHandler()
-          props.onAdicionarOportunidade(data);
+          props.onAdicionarOportunidade();
         }
 
     }
