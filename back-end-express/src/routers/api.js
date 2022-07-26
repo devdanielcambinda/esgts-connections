@@ -35,7 +35,8 @@ router.post(
     if (
       req.body.tipoDeConta === "Aluno" ||
       req.body.tipoDeConta === "Professor"
-    ) { //works
+    ) {
+      //works
       const receivedKeys = Object.keys(req.body);
       const requiredKeys = [
         "nome",
@@ -80,7 +81,8 @@ router.post(
       }
     }
 
-    if (req.body.tipoDeConta === "Externo" && !req.body.entidade) { //works
+    if (req.body.tipoDeConta === "Externo" && !req.body.entidade) {
+      //works
       // se for externo e não escolher entidade/criar nova entidade
 
       const receivedKeys = Object.keys(req.body);
@@ -163,7 +165,7 @@ router.post(
 
         let arrayOfAreas = req.body.areas.split(",").map((area) => area.trim());
         arrayOfAreas.forEach(async (area) => {
-          console.log('here')
+          console.log("here");
           await Area_Entidade.create({
             area: area,
             EntidadeId: entidade.id,
@@ -176,7 +178,6 @@ router.post(
     }
 
     if (req.body.tipoDeConta === "Externo" && req.body.entidade) {
-      
       // se for externo e escolher entidade já existente
       const receivedKeys = Object.keys(req.body);
       const requiredKeys = [
@@ -263,6 +264,21 @@ router.get("/utilizador/me/avatar", auth, async (req, res) => {
 
 router.delete("/utilizador/me", auth, async (req, res) => {
   try {
+    if (req.user.tipoDePerfil === "Externo") {
+      const contacto = await Contacto.findOne({ UtilizadorId: req.user.id });
+      const oportunidades = await Oportunidade.findAll({
+        ContactoId: contacto.id,
+      });
+
+      oportunidades.forEach(async (oportunidade) => {
+        oportunidade.delete = true;
+        await oportunidade.save();
+      });
+
+      contacto.deleted = true;
+      await contacto.save();
+    }
+
     req.user.deleted = true;
     await req.user.save();
     req.session.destroy((err) => {
@@ -307,31 +323,87 @@ router.get("/entidades", async (req, res) => {
 });
 
 //oportunidades
-router.post("/oportunidade",auth, async (req, res) => {
-    if(req.user.tipoDePerfil === "Externo"){
-      const oportunidade = await Oportunidade.create({
-        titulo: req.body.titulo,
-        descricao: req.body.descricao,
-        tipo_de_oportunidade: req.body.tipoDeOportunidade,
-        data_de_inicio: req.body.dataDeInicio,
-        data_de_fim: req.body.dataDeFim,
-        ContactoId: req.user.id,
-      });
+router.post("/oportunidade", auth, async (req, res) => {
+  if (req.user.tipoDePerfil === "Externo") {
 
-      res.send({oportunidade});
-    }else{
-      res.status(400).send({message: "Apenas externos podem criar oportunidades"});
-    }
-})
+    const contacto = await Contacto.findOne({
+      where: { UtilizadorId: req.user.id },
+    });
+
+
+    const oportunidade = await Oportunidade.create({
+      titulo: req.body.titulo,
+      descricao: req.body.descricao,
+      tipo_de_oportunidade: req.body.tipoDeOportunidade,
+      data_de_inicio: req.body.dataDeInicio,
+      data_de_fim: req.body.dataDeFim,
+      ContactoId: contacto.id,
+    });
+
+    res.send(oportunidade);
+  } else {
+    res
+      .status(400)
+      .send({ message: "Apenas externos podem criar oportunidades" });
+  }
+});
+
+router.get("/oportunidades/estagios", async (req, res) => {
+  try {
+    const estagios = await Oportunidade.findAll({
+      where: {
+        deleted: false,
+        tipo_de_oportunidade: "Estágio",
+      },
+    });
+
+    res.send(estagios);
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
+
+router.get("/oportunidades/workshops", async (req, res) => {
+  try {
+    const workshops = await Oportunidade.findAll({
+      where: {
+        deleted: false,
+        tipo_de_oportunidade: "Workshop",
+      },
+    });
+
+    res.send(workshops);
+  } catch (error) {
+    res.status(400).send({ error });
+  }
+});
+  
+
+router.get("/oportunidades/trabalhos", async (req, res) => {
+  try {
+
+
+    const trabalhos = await Oportunidade.findAll({
+      where: {
+        deleted: false,
+        tipo_de_oportunidade: "Trabalho",
+      },
+    });
+
+    res.send(trabalhos);
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+});
 
 router.get("/contacto/oportunidades", auth, async (req, res) => {
-
-  if(req.user.tipoDePerfil === "Externo"){
+  if (req.user.tipoDePerfil === "Externo") {
     try {
+      const contacto = await Contacto.findOne({ where: {UtilizadorId: req.user.id} });
       const oportunidades = await Oportunidade.findAll({
         where: {
           deleted: false,
-          ContactoId: req.user.id,
+          ContactoId: contacto.id,
         },
       });
 
@@ -340,6 +412,7 @@ router.get("/contacto/oportunidades", auth, async (req, res) => {
       res.status(400).send({ error });
     }
   }
-})
+});
+
 
 module.exports = router;

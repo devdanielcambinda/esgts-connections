@@ -14,7 +14,7 @@ const Perfil = () => {
     const getUser =  async ()=>{
       const userResult = await fetch("/api/utilizador/me", {
         method: "GET",
-        credentials: "include",
+        credentials: "same-origin",
       });
 
       if(userResult.status !== 200){
@@ -61,7 +61,10 @@ const Perfil = () => {
   };
 
   const apagarOportunidadeHandler = async (oportunidade) => {
-    //TODO: Apagar oportunidade
+    /*TODO:
+    -Apagar oportunidade
+    -mostrar oportunidades nas devidas páginas
+    */
   }
 
   const deleteAccountHandler = async () =>{
