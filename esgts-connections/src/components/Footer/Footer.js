@@ -6,7 +6,7 @@ const Footer = () =>{
       <footer className="mt-auto text-center text-lg-start bg-light text-muted">
         <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
           <div className="me-5 d-none d-lg-block">
-            <span>Get connected with us on social networks:</span>
+            <span>Redes sociais:</span>
           </div>
 
           <div>
@@ -54,8 +54,7 @@ const Footer = () =>{
                   Tecnologia
                 </h6>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  
                 </p>
               </div>
 

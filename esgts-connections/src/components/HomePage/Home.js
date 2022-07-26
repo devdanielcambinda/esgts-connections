@@ -31,10 +31,7 @@ const Home = () => {
           <div className="col-md-4">
             <h2>Estágio</h2>
             <p>
-              Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
-              tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-              fermentum massa justo sit amet risus. Etiam porta sem malesuada
-              magna mollis euismod. Donec sed odio dui.{" "}
+              Nesta página pode encontrar os estágios disponiveis.
             </p>
             <p>
               <a className="btn btn-danger" href="/estagios" role="button">
@@ -44,12 +41,7 @@ const Home = () => {
           </div>
           <div className="col-md-4">
             <h2>Workshops</h2>
-            <p>
-              Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
-              tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-              fermentum massa justo sit amet risus. Etiam porta sem malesuada
-              magna mollis euismod. Donec sed odio dui.{" "}
-            </p>
+            <p>Nesta página pode encontrar os workshops disponiveis.</p>
             <p>
               <a className="btn btn-danger" href="/workshops" role="button">
                 Ver workshops »
@@ -59,10 +51,7 @@ const Home = () => {
           <div className="col-md-4">
             <h2>Ofertas de trabalho</h2>
             <p>
-              Donec sed odio dui. Cras justo odio, dapibus ac facilisis in,
-              egestas eget quam. Vestibulum id ligula porta felis euismod
-              semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-              condimentum nibh, ut fermentum massa justo sit amet risus.
+              Nesta página pode encontrar as ofertas de trabalho disponiveis.
             </p>
             <p>
               <a className="btn btn-danger" href="/trabalhos" role="button">

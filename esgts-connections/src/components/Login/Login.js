@@ -45,7 +45,8 @@ const Login = () => {
 
   return (
     <div className="container" style={{ maxWidth: 500 }}>
-      {location.state ? <div style={{"color":"green"}}>{location.state.message}</div> : ""}
+      {location.state && location.state.id === 1? <div style={{"color":"green"}}>{location.state.message}</div> : ""}
+      {location.state && location.state.id === 2? <div style={{"color":"red"}}>{location.state.message}</div> : ""}
       {loginNotOK === true ? <div style={{"color":"red"}}>Email e&#47;ou password incorreto&#40;s&#41; </div> : ""}
       <form onSubmit={submitHandler} className="text-center">
         <h2 className="mb-5">Login</h2>

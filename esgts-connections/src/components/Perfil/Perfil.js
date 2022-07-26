@@ -2,10 +2,19 @@ import React, {useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import NovaOportunidade from './NovaOportunidade/NovaOportunidade';
 import styles from "./Perfil.module.css";
+import Cookies from "js-cookie";
 
 const Perfil = () => {
 
   const navigate = useNavigate();
+
+  const sessionCookie = Cookies.get("sessionCookie");
+  const [isLogged] = useState(sessionCookie !== undefined ? true : false);
+
+  if(!isLogged){
+    navigate("/login",{state:{id:2,message:"Não tem sessão iniciada"},replace:true});
+  }
+
   const [user, setUser] = useState();
   const [oportunidades, setOportunidades] = useState([]);
   const [criarOportunidade, setCriarOportunidade] = useState(false);
