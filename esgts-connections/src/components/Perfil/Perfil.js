@@ -60,11 +60,20 @@ const Perfil = () => {
     window.location.reload();
   };
 
-  const apagarOportunidadeHandler = async (oportunidade) => {
-    /*TODO:
-    -Apagar oportunidade
-    -mostrar oportunidades nas devidas páginas
-    */
+  const apagarOportunidadeHandler = async (event,oportunidadeId) => {
+    event.preventDefault();
+
+    const oportunidadeResult = await fetch(`/api/contacto/oportunidade/${oportunidadeId}`, {
+      method: "DELETE",
+      credentials: "include",
+    })
+
+    if(oportunidadeResult.status !== 200){
+     return  alert("Erro ao apagar oportunidade")
+    }
+
+    window.location.reload();
+
   }
 
   const deleteAccountHandler = async () =>{
@@ -112,7 +121,7 @@ const Perfil = () => {
                   <p className={styles.fonts}>Telemóvel: {user.telefone}</p>
                 </div>
 
-                <ul className={styles.socialList}>
+                {user.linkLinkedin !== null? <ul className={styles.socialList}>
                   <li>
                     <a
                       href={user.linkLinkedin}
@@ -122,7 +131,7 @@ const Perfil = () => {
                       <i className="fa fa-linkedin"></i>
                     </a>
                   </li>
-                </ul>
+                </ul> : ""}
 
                 <div className="buttons">
                   {user.tipoDePerfil === "Externo"? <button
@@ -148,7 +157,7 @@ const Perfil = () => {
             ) : (
               ""
             )}
-            {oportunidades.map((oportunidade) => {
+            {oportunidades.map((oportunidade,key) => {
               return (
                 <div  key={oportunidade.id} className="card mb-4 box-shadow">
                   <div className="card-body">
@@ -161,7 +170,7 @@ const Perfil = () => {
                         <button
                           type="button"
                           className="btn btn-sm btn-outline-danger"
-                          onClick={apagarOportunidadeHandler}
+                          onClick={event => apagarOportunidadeHandler(event,oportunidade.id)}
                         >
                           Apagar
                         </button>

@@ -265,14 +265,11 @@ router.get("/utilizador/me/avatar", auth, async (req, res) => {
 router.delete("/utilizador/me", auth, async (req, res) => {
   try {
     if (req.user.tipoDePerfil === "Externo") {
-      const contacto = await Contacto.findOne({ UtilizadorId: req.user.id });
-      const oportunidades = await Oportunidade.findAll({
-        ContactoId: contacto.id,
-      });
-
-      oportunidades.forEach(async (oportunidade) => {
-        oportunidade.delete = true;
-        await oportunidade.save();
+      const contacto = await Contacto.findOne({ where:{UtilizadorId: req.user.id} });
+      const oportunidades = await Oportunidade.update({
+        deleted:true
+      },{
+        where: { ContactoId: contacto.id },
       });
 
       contacto.deleted = true;
@@ -413,6 +410,22 @@ router.get("/contacto/oportunidades", auth, async (req, res) => {
     }
   }
 });
+
+router.delete("/contacto/oportunidade/:id", auth, async (req, res) => {
+  if (req.user.tipoDePerfil === "Externo") {
+    try {
+      const oportunidade = await Oportunidade.findOne({
+        where: { id: req.params.id },
+      });
+
+      oportunidade.deleted = true;
+      await oportunidade.save();
+      res.send(oportunidade);
+    } catch (error) {
+      res.status(400).send({ error });
+    }
+  }
+})
 
 
 module.exports = router;
