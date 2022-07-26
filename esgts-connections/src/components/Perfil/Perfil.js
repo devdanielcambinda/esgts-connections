@@ -70,18 +70,19 @@ const Perfil = () => {
   };
 
   const apagarOportunidadeHandler = async (event,oportunidadeId) => {
-    event.preventDefault();
 
-    const oportunidadeResult = await fetch(`/api/contacto/oportunidade/${oportunidadeId}`, {
-      method: "DELETE",
-      credentials: "include",
-    })
+    if(window.confirm("Tem a certeza que quer apagar esta oportunidade?")){
+      const oportunidadeResult = await fetch(`/api/contacto/oportunidade/${oportunidadeId}`, {
+        method: "DELETE",
+        credentials: "include",
+      })
 
-    if(oportunidadeResult.status !== 200){
-     return  alert("Erro ao apagar oportunidade")
+      if(oportunidadeResult.status !== 200){
+      return  alert("Erro ao apagar oportunidade")
+      }
+
+      window.location.reload();
     }
-
-    window.location.reload();
 
   }
 
