@@ -19,7 +19,7 @@ const avatarUploads = multer({
   },
   fileFilter(req, file, cb) {
     if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-      return cb(new Error("Please insert a image file"));
+      return cb(new Error("Por favor  insira um ficheiro de imagem"));
     }
     cb(undefined, true);
   },

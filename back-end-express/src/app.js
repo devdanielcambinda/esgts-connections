@@ -20,7 +20,7 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly:false,
-      maxAge: 1000 * 60 * 60  , // 1 hour
+      maxAge: 1000 * 60 * 60  , // 1 hora
       sameSite: "strict",
     },
   })
@@ -29,7 +29,6 @@ app.use(
 //passport 
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 //routes
 app.use("/api", api);
