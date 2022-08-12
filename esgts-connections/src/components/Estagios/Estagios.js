@@ -44,20 +44,25 @@ const Estagios = () => {
                     <img
                       className="card-img-top"
                       alt="ESGTS"
-                      style={{ height: 200, width: "100%", display: "block" }}
-                      src="/ipsesgtslogo.png"
+                      style={{ height: 200, width: "100%", display: "block", objectFit: "cover" }}
+                      src={`/api/entidade/avatar/${estagio.Entidade.id}`}
                     />
                     <div className="card-body">
                       <h3 className="card-title">{estagio.titulo}</h3>
                       <p className="card-text">{estagio.descricao}</p>
-                      <p className="card-texxt">
-                        {" "}
+                      <p>
+                        Oferecido por: {estagio.Entidade.nome}
+                      </p>
+                      <p className="card-text">
+                        Localidade: {estagio.Entidade.localidade}
+                      </p>
+                      <p className="card-text">
                         Data de Inicio: {estagio.data_de_inicio}
                       </p>
-                      <p className="card-texxt">
-                        {" "}
+                      <p className="card-text">
                         Data de Fim: {estagio.data_de_fim}
                       </p>
+                      
                       <div className="d-flex justify-content-between align-items-center">
                         <div className="btn-group">
                           {/* <button

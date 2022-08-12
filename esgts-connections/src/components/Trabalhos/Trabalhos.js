@@ -44,12 +44,21 @@ const Trabalhos = () => {
                       <img
                         className="card-img-top"
                         alt="ESGTS"
-                        style={{ height: 200, width: "100%", display: "block" }}
-                        src="/ipsesgtslogo.png"
+                        style={{
+                          height: 200,
+                          width: "100%",
+                          display: "block",
+                          objectFit: "cover",
+                        }}
+                        src={`/api/entidade/avatar/${trabalho.Entidade.id}`}
                       />
                       <div className="card-body">
                         <h3 className="card-title">{trabalho.titulo}</h3>
                         <p className="card-text">{trabalho.descricao}</p>
+                        <p>Oferecido por: {trabalho.Entidade.nome}</p>
+                        <p className="card-text">
+                          Localidade: {trabalho.Entidade.localidade}
+                        </p>
                         <p className="card-text">
                           Data de Inicio: {trabalho.data_de_inicio}
                         </p>

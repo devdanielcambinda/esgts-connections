@@ -265,12 +265,17 @@ router.get("/utilizador/me/avatar", auth, async (req, res) => {
 router.delete("/utilizador/me", auth, async (req, res) => {
   try {
     if (req.user.tipoDePerfil === "Externo") {
-      const contacto = await Contacto.findOne({ where:{UtilizadorId: req.user.id} });
-      const oportunidades = await Oportunidade.update({
-        deleted:true
-      },{
-        where: { ContactoId: contacto.id },
+      const contacto = await Contacto.findOne({
+        where: { UtilizadorId: req.user.id },
       });
+      const oportunidades = await Oportunidade.update(
+        {
+          deleted: true,
+        },
+        {
+          where: { ContactoId: contacto.id },
+        }
+      );
 
       contacto.deleted = true;
       await contacto.save();
@@ -322,11 +327,9 @@ router.get("/entidades", async (req, res) => {
 //oportunidades
 router.post("/oportunidade", auth, async (req, res) => {
   if (req.user.tipoDePerfil === "Externo") {
-
     const contacto = await Contacto.findOne({
       where: { UtilizadorId: req.user.id },
     });
-
 
     const oportunidade = await Oportunidade.create({
       titulo: req.body.titulo,
@@ -354,6 +357,17 @@ router.get("/oportunidades/estagios", async (req, res) => {
       },
     });
 
+    for (const estagio of estagios) {
+      const contacto = await Contacto.findOne({
+        where: { id: estagio.ContactoId },
+      });
+      const entidade = await Entidade.findOne({
+        where: { id: contacto.EntidadeId },
+      });
+      estagio.setDataValue("Contacto", contacto);
+      estagio.setDataValue("Entidade", entidade);
+    }
+
     res.send(estagios);
   } catch (error) {
     res.status(500).send({ error });
@@ -369,23 +383,46 @@ router.get("/oportunidades/workshops", async (req, res) => {
       },
     });
 
+    for (const workshop of workshops) {
+      const contacto = await Contacto.findOne({
+        where: { id: workshop.ContactoId },
+      });
+      const entidade = await Entidade.findOne({
+        where: { id: contacto.EntidadeId },
+      });
+
+      workshop.setDataValue("Contacto", contacto);
+      workshop.setDataValue("Entidade", entidade);
+    }
+
     res.send(workshops);
   } catch (error) {
     res.status(400).send({ error });
   }
 });
-  
 
 router.get("/oportunidades/trabalhos", async (req, res) => {
   try {
-
-
     const trabalhos = await Oportunidade.findAll({
       where: {
         deleted: false,
         tipo_de_oportunidade: "Trabalho",
       },
     });
+
+    for (const trabalho of trabalhos) {
+      const contacto = await Contacto.findOne({
+        where: { id: trabalho.ContactoId },
+      });
+
+      const entidade = await Entidade.findOne({
+        where: { id: contacto.EntidadeId },
+      });
+
+      trabalho.setDataValue("Contacto", contacto);
+      trabalho.setDataValue("Entidade", entidade);
+
+    }
 
     res.send(trabalhos);
   } catch (error) {
@@ -396,7 +433,9 @@ router.get("/oportunidades/trabalhos", async (req, res) => {
 router.get("/contacto/oportunidades", auth, async (req, res) => {
   if (req.user.tipoDePerfil === "Externo") {
     try {
-      const contacto = await Contacto.findOne({ where: {UtilizadorId: req.user.id} });
+      const contacto = await Contacto.findOne({
+        where: { UtilizadorId: req.user.id },
+      });
       const oportunidades = await Oportunidade.findAll({
         where: {
           deleted: false,
@@ -410,6 +449,20 @@ router.get("/contacto/oportunidades", auth, async (req, res) => {
     }
   }
 });
+
+router.get('/entidade/avatar/:id',async (req,res)=>{
+  try {
+    const entidade = await Entidade.findOne({
+      where:{
+        id:req.params.id
+      }
+    })
+    res.set("Content-Type", "image/png");
+    res.send(entidade.foto)
+  } catch (error) {
+    res.status(500).send({ error });
+  }
+})
 
 router.delete("/contacto/oportunidade/:id", auth, async (req, res) => {
   if (req.user.tipoDePerfil === "Externo") {
@@ -425,7 +478,6 @@ router.delete("/contacto/oportunidade/:id", auth, async (req, res) => {
       res.status(400).send({ error });
     }
   }
-})
-
+});
 
 module.exports = router;
