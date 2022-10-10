@@ -30,6 +30,10 @@ export default function NovaOportunidade(props){
       dataMinima()
     }, [])
 
+    const changeMinDataDeFim = ()=>{
+      document.getElementById("dataDeFim").setAttribute("min", document.getElementById("dataDeInicio").value);
+    }
+
     const tituloChangeHandler = (event) => {
         setTitulo(event.target.value);
     }
@@ -44,10 +48,12 @@ export default function NovaOportunidade(props){
 
     const dataDeInicioChangeHandler = (event) => {
         setDataDeInicio(event.target.value);
+        changeMinDataDeFim()
     }
 
     const dataDeFimChangeHandler = (event) => {
         setDataDeFim(event.target.value);
+        
     }
 
     const resetFormHandler = () => {
