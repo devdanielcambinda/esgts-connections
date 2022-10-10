@@ -1,5 +1,5 @@
 import "./LowerNav.css";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 
@@ -24,13 +24,14 @@ const LowerNav = () => {
       credentials: "include",
     });
 
-    if(result.status === 200){
-      navigate("/login",{state:{id:1,message:"Sessão encerrada com sucesso"}});
-      document.location.reload()
-    }else{
-      document.location.reload()
+    if (result.status === 200) {
+      navigate("/login", {
+        state: { id: 1, message: "Sessão encerrada com sucesso" },
+      });
+      document.location.reload();
+    } else {
+      document.location.reload();
     }
-
   };
 
   // padding top e bottom 20 px 12px left e right -- font size 14px font-weight 800 ---
@@ -39,10 +40,7 @@ const LowerNav = () => {
       <ul>
         <li>
           <Link to="/">
-            <img
-              src="https://siesgt.ipsantarem.pt/esgt/imagens/LogotipoSITEdtmod20220310140019"
-              alt=""
-            ></img>
+            <img src="/ipsesgtslogo.png" alt=""></img>
           </Link>
         </li>
         <li>
@@ -59,7 +57,6 @@ const LowerNav = () => {
         </li>
         <li>
           <a id="logout" href="#!" onClick={logoutHandler}>
-            {" "}
             <span>Logout</span>
           </a>
         </li>
