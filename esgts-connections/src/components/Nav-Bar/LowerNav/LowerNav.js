@@ -80,10 +80,7 @@ const LowerNav = () => {
       <ul>
         <li>
           <Link to="/">
-            <img
-              src="https://siesgt.ipsantarem.pt/esgt/imagens/LogotipoSITEdtmod20220310140019"
-              alt=""
-            ></img>
+            <img src="/ipsesgtslogo.png" alt=""></img>
           </Link>
         </li>
         <li>
