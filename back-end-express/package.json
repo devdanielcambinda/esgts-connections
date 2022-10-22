@@ -5,7 +5,7 @@
   "repository": "https://github.com/devdanielcambinda/esgts-connections",
   "author": "Daniel Cambinda",
   "scripts": {
-    "start": "node src/yserver.js",
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
   "dependencies": {
